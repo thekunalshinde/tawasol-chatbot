@@ -26,7 +26,7 @@ if question := st.chat_input("Ask about any Tawasol Amal workflow..."):
         with st.spinner("Thinking..."):
             try:
                 response = requests.post(
-                    "http://localhost:8000/chat",
+                    "https://tawasol-chatbot.onrender.com/chat",
                     json={"question": question}
                 )
                 answer = response.json()["answer"]
