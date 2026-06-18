@@ -1,0 +1,160 @@
+TAWASOL AMAL CRM - TESTING KNOWLEDGE BASE
+==========================================
+
+MODULE: OPPORTUNITY MANAGEMENT
+================================
+What is an Opportunity?
+An Opportunity in Tawasol Amal represents a potential sale or deal with a customer. It is the starting point of the entire sales flow.
+
+How to Create an Opportunity:
+1. Login to Tawasol Amal CRM
+2. On the left sidebar, click the "Opportunity" button
+3. Click "New Opportunity" or the "+" button
+4. Fill in the opportunity form with the following fields:
+   - Customer Name
+   - Account details
+   - Product/Service interested in
+   - Expected value
+   - Notes or requirements
+5. Click Save to create the opportunity
+
+Testing Checklist for Create Opportunity:
+- Verify all mandatory fields are validated (error shown if empty)
+- Verify opportunity is saved and appears in the list
+- Verify opportunity has a unique ID generated
+- Verify created date is automatically set
+- Verify the opportunity status shows as "New" or "Open"
+
+MODULE: OPPORTUNITY TO SIGNED CONTRACT
+=======================================
+What is Signed Contract Stage?
+After an opportunity is created and customer agrees, the opportunity must be moved to "Signed Contract" status.
+
+How to Move Opportunity to Signed Contract:
+1. Open the existing opportunity
+2. Look for the status dropdown or stage button
+3. Change the status to "Signed Contract"
+4. Attach the signed contract document if required
+5. Save the changes
+
+Testing Checklist for Signed Contract:
+- Verify status changes from Open to Signed Contract
+- Verify the stage history is updated
+- Verify Auto Quote button becomes available after this stage
+
+MODULE: QUOTE CREATION VIA AUTO QUOTE
+======================================
+What is Auto Quote?
+Auto Quote is a button inside the Opportunity that automatically generates a Quote linked to that Opportunity. It pre-fills data from the opportunity.
+
+How to Create a Quote via Auto Quote:
+1. Open the Opportunity that is in Signed Contract stage
+2. Click the "Auto Quote" button
+3. System automatically creates a Quote
+4. You will be redirected to the Quote or a link to the Quote appears
+5. Open the Quote to proceed
+
+Testing Checklist for Auto Quote:
+- Verify Auto Quote button is visible only after Signed Contract stage
+- Verify clicking Auto Quote creates a new Quote
+- Verify Quote is linked to the parent Opportunity
+- Verify customer details are pre-filled in the Quote from Opportunity
+- Verify Quote has a unique Quote ID
+
+MODULE: FEASIBILITY CHECK
+==========================
+What is Feasibility?
+Feasibility is a check performed inside the Quote to verify if the telecom service or product can be physically delivered to the customer location or configuration.
+
+How to Perform Feasibility:
+1. Open the Quote created via Auto Quote
+2. Look for the "Feasibility" button or section
+3. Click "Check Feasibility" or "Run Feasibility"
+4. System checks if the service can be delivered
+5. Feasibility result will show as Pass or Fail
+6. If Pass - you can proceed to create a Deal
+7. If Fail - the order cannot proceed, review the customer location or product
+
+Testing Checklist for Feasibility:
+- Verify Feasibility button is present in the Quote
+- Verify Feasibility runs and returns a result
+- Verify if Feasibility Passes, Deal creation option becomes available
+- Verify if Feasibility Fails, appropriate error message is shown
+- Verify Feasibility result is saved on the Quote
+
+MODULE: DEAL CREATION AND HUB APPROVAL
+========================================
+What is a Deal?
+A Deal is created from the Quote after Feasibility passes. The Deal goes through a Hub Approval process before the order can be placed.
+
+How to Create a Deal:
+1. Open the Quote where Feasibility has passed
+2. Click "Create Deal" button
+3. Deal is created and linked to the Quote
+4. Deal is automatically sent to Hub for Approval
+5. Wait for Hub team to Approve the Deal
+
+What is Hub Approval?
+Hub Approval is a management-level approval step where the Hub team reviews and approves the Deal before it can become an Order.
+
+Testing Checklist for Deal and Hub Approval:
+- Verify Create Deal button appears after Feasibility passes
+- Verify Deal is created with correct details from Quote
+- Verify Deal status shows as "Pending Approval" or "Sent to Hub"
+- Verify Hub team receives notification for approval
+- Verify after Hub Approval, Deal status changes to Approved
+- Verify rejected deals show correct rejection reason
+
+MODULE: QUOTE SUBMISSION AND ORDER CREATION
+============================================
+What is Quote Submission?
+After the Deal is approved by Hub, the Quote is submitted which triggers the Order creation automatically in Tawasol Amal.
+
+How to Submit Quote and Create Order:
+1. Ensure Deal is Approved by Hub
+2. Go back to the Quote
+3. Click "Submit Quote" button
+4. System processes the submission
+5. An Order is automatically created and linked to the Quote
+6. Order number is generated
+
+Testing Checklist for Order Creation:
+- Verify Submit Quote button is only active after Hub Approval
+- Verify clicking Submit Quote creates an Order automatically
+- Verify Order has a unique Order ID
+- Verify Order is linked to the Quote and Opportunity
+- Verify Order status shows correctly
+- Verify customer receives any notification if configured
+
+FULL FLOW SUMMARY
+=================
+Complete flow from Opportunity to Order:
+Step 1: Create Opportunity (Left Sidebar → Opportunity → Fill Form → Save)
+Step 2: Move to Signed Contract (Open Opportunity → Change Status → Save)
+Step 3: Auto Quote (Open Opportunity → Click Auto Quote → Quote Created)
+Step 4: Feasibility (Open Quote → Run Feasibility → Must Pass)
+Step 5: Create Deal (Open Quote → Create Deal → Sent to Hub)
+Step 6: Hub Approval (Hub team reviews and approves the Deal)
+Step 7: Submit Quote (Open Quote → Submit Quote → Order Created)
+
+TEAMS IN TAWASOL AMAL
+======================
+Granite Team:
+- Handles network and infrastructure layer
+- Involved in feasibility and network checks
+- Tests should verify Granite team receives correct requests
+
+Order Management Team:
+- Manages the full lifecycle of orders after creation
+- Handles order status updates, tracking, and fulfillment
+- Testing should verify order status transitions are correct
+
+EAI Team (Enterprise Application Integration):
+- Handles integrations between Tawasol Amal and other systems
+- Ensures data flows correctly between internal systems
+- Testing should verify integration points work correctly
+
+APIM Team (API Management):
+- Manages the APIs used by Tawasol Amal
+- Handles API security, throttling, and monitoring
+- Testing should verify API responses are correct
